@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Set this to your Neon PostgreSQL connection string
+}
+
+model User {
+  id                  String         @id @default(uuid())
+  name                String
+  email               String         @unique
+  password            String         // Hashed password
+  cycleLength         Int            @default(28)
+  periodLength        Int            @default(5)
+  periodReminder      Boolean        @default(true)
+  fertileReminder     Boolean        @default(true)
+  dailyTips           Boolean        @default(true)
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  cycleRecords        CycleRecord[]
+  predictions         Prediction[]
+  bookmarks           Bookmark[]
+}
+
+model CycleRecord {
+  id            String    @id @default(uuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startDate     DateTime  // YYYY-MM-DD
+  endDate       DateTime? // YYYY-MM-DD (optional)
+  flowIntensity String    // Light, Medium, Heavy, Very Heavy
+  symptoms      String[]  // Cramps, Headache, Fatigue, etc.
+  mood          String    // Happy, Calm, Sensitive, Sad, Anxious, Angry
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Prediction {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  predictedStart DateTime
+  predictedEnd   DateTime
+  ovulationDate  DateTime
+  fertileStart   DateTime
+  fertileEnd     DateTime
+  createdAt      DateTime @default(now())
+}
+
+model Article {
+  id        String     @id @default(uuid())
+  title     String
+  category  String     // Education, Nutrition, Fitness, Mind
+  content   String
+  readTime  String     // e.g. "5 min read"
+  imageUrl  String
+  bookmarks Bookmark[]
+  createdAt DateTime   @default(now())
+}
+
+model Bookmark {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId String
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, articleId])
+}

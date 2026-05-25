@@ -1,0 +1,6 @@
+{
+  "name": "Period Tracker",
+  "description": "A modern, responsive, and minimalist menstrual cycle tracking application with calendar prediction, daily wellness logs, cycle insights, and personalized AI health tips.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

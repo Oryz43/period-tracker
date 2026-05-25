@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "oryza-id",
+      "name": "Oryza",
+      "email": "oryza@example.com",
+      "password": "password123",
+      "cycleLength": 28,
+      "periodLength": 5,
+      "notificationSettings": {
+        "periodReminder": true,
+        "fertileReminder": true,
+        "dailyTips": true
+      }
+    },
+    {
+      "id": "user-1779701187081",
+      "name": "eky",
+      "email": "eky@gmail.com",
+      "password": "fallinlove",
+      "cycleLength": 28,
+      "periodLength": 5,
+      "notificationSettings": {
+        "periodReminder": true,
+        "fertileReminder": true,
+        "dailyTips": true
+      }
+    }
+  ],
+  "cycleRecords": [
+    {
+      "id": "rec-1",
+      "userId": "oryza-id",
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-05",
+      "flowIntensity": "Medium",
+      "symptoms": [
+        "Kram perut",
+        "Kelelahan"
+      ],
+      "mood": "Sensitive",
+      "notes": "Siklus haid lancar seperti biasa, nyeri panggul ringan di hari kedua.",
+      "createdAt": "2026-03-01T12:00:00.000Z"
+    },
+    {
+      "id": "rec-2",
+      "userId": "oryza-id",
+      "startDate": "2026-03-29",
+      "endDate": "2026-04-03",
+      "flowIntensity": "Heavy",
+      "symptoms": [
+        "Kram perut",
+        "Sakit kepala",
+        "Sakit pinggang"
+      ],
+      "mood": "Sad",
+      "notes": "Cukup lemas di hari-hari awal. Mengompres perut menggunakan air hangat sangat membantu.",
+      "createdAt": "2026-03-29T08:00:00.000Z"
+    },
+    {
+      "id": "rec-3",
+      "userId": "oryza-id",
+      "startDate": "2026-04-26",
+      "endDate": "2026-04-30",
+      "flowIntensity": "Medium",
+      "symptoms": [
+        "Kram perut",
+        "Kembung"
+      ],
+      "mood": "Sensitive",
+      "notes": "Sedikit kembung sebelum datang bulan. Kram perut mereda di hari ke-3.",
+      "createdAt": "2026-04-26T09:00:00.000Z"
+    }
+  ],
+  "bookmarks": []
+}
