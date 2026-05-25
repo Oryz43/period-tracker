@@ -158,11 +158,7 @@ function loadDB() {
 
 // Helper function to save DB
 function saveDB(data: any) {
-  try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
-  } catch (err) {
-    console.error("Failed to write to DB", err);
-  }
+  console.log("Mock DB save skipped in Vercel production.");
 }
 
 // ------------------------------------------
